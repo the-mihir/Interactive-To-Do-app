@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Active ToDo</title>
+    
+    <!-- DaisyUI & Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+
+    <style>
+        /* Custom styles for better layout */
+        .container {
+            max-width: 1200px;
+            padding: 0 1rem;
+        }
+
+        main{
+            background-image: url('./assests/img/hero_bg.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-800">
+
+    <!-- ✅ Header/Navbar -->
+    <header class="bg-white shadow-sm py-4">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="/" class="text-2xl font-bold text-primary">Active ToDo</a>
+            <a href="/log-in.html" class="btn btn-primary rounded-full text-white uppercase px-6">Start Now</a>
+        </div>
+    </header>
+
+
+    <!-- ✅ Main Content (Login Form) -->
+    <main class="mx-auto relative ">
+        <div class="absolute inset-0 bg-black bg-opacity-40"></div>
+        <section class="hero min-h-screen bg-transparent">
+            <div class="hero-content text-center">
+                <div class="max-w-[60%]">
+                    <h1 class="text-5xl font-bold text-white ">Welcome to Your Todo App</h1>
+                    <p class="py-6 text-lg text-white">Stay organized, keep track of your tasks, and boost your productivity!</p>
+                    <a href="/sign-up.html" class="btn btn-primary text-white">SignUp Here</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-4  w-full text-center">
+        <p>© <span id="year"></span> Your Company. All rights reserved.</p>
+    </footer>
+
+
+
+    <!-- JavaScript for Dynamic Year -->
+ 
+
+</body>
+</html>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Dashboard - ToDo App</title>
+    <title>Profile Page - ToDo App</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="font-sans bg-gray-100">
@@ -13,14 +13,17 @@
         <div class="bg-gray-800 text-white w-64 min-h-screen flex flex-col">
             <!-- Logo -->
             <div class="flex items-center justify-center h-20 bg-gray-900">
-               <a href="/dashboard.html"> <span class="text-2xl font-semibold">ToDo Admin</span></a>
+                <a href="/dashboard.html"><span class="text-2xl font-semibold">ToDo Admin</span></a>
             </div>
 
             <!-- Sidebar Menu -->
             <div class="flex-grow">
                 <ul class="space-y-2">
-                    <li><a href="/dashboard.html" class="block px-6 py-3 text-lg hover:bg-gray-700">Overviews</a></li>
-                    <li><a href="/tasks.html" class="block px-6 py-3 text-lg hover:bg-gray-700">Tasks</a></li>
+                    <li><a href="/dashboard.html" class="block px-6 py-3 text-lg hover:bg-gray-700">Dashboard</a></li>
+                    <li><a href="#" class="block px-6 py-3 text-lg hover:bg-gray-700">Tasks</a></li>
+                    <li><a href="#" class="block px-6 py-3 text-lg hover:bg-gray-700">Users</a></li>
+                    <li><a href="#" class="block px-6 py-3 text-lg hover:bg-gray-700">Settings</a></li>
+                    <li><a href="#" class="block px-6 py-3 text-lg hover:bg-gray-700">Logout</a></li>
                 </ul>
             </div>
         </div>
@@ -29,7 +32,7 @@
         <div class="flex-grow">
             <!-- Top Nav -->
             <div class="bg-white shadow-md px-4 py-3 flex items-center justify-between">
-                <div class="text-xl font-semibold">Active ToDo</div>
+                <div class="text-xl font-semibold">Admin Dashboard</div>
                 <div class="flex items-center space-x-4">
                     <div class="relative">
                         <button id="profileButton" class="px-4 py-2 text-white bg-blue-500 rounded-md">Profile</button>
@@ -42,24 +45,13 @@
 
             <!-- Dashboard Content -->
             <div class="px-6 py-4">
-                <div class="text-xl font-semibold">Dashboard Overview</div>
+                <div class="text-xl font-semibold">Profile Overview</div>
                 <div class="grid grid-cols-3 gap-4 mt-4">
                     <!-- Card Example: Tasks -->
-                    <div class="bg-white p-6 rounded-lg shadow-md">
-                        <h3 class="text-lg font-semibold">Total Tasks</h3>
-                        <p class="text-4xl text-center mt-2">150</p>
-                    </div>
-
-                    <!-- Card Example: Users -->
-                    <div class="bg-white p-6 rounded-lg shadow-md">
-                        <h3 class="text-lg font-semibold">Active Users</h3>
-                        <p class="text-4xl text-center mt-2">25</p>
-                    </div>
-
-                    <!-- Card Example: Pending Tasks -->
-                    <div class="bg-white p-6 rounded-lg shadow-md">
-                        <h3 class="text-lg font-semibold">Pending Tasks</h3>
-                        <p class="text-4xl text-center mt-2">75</p>
+                    <div class="bg-white p-6 rounded-lg shadow-md text-ecnter">
+                        <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="">
+                        <p class="text-4xl font-semibold mt-3">Hi, 👋 <span id="Profile__name"></span></p>
+                        <p class="text-2xl mt-2">Your Email:📧 <span id="Profile__email"></span></p>
                     </div>
                 </div>
             </div>
@@ -71,35 +63,35 @@
         <p>© <span id="year"></span> Your Company. All rights reserved.</p>
     </footer>
 
-
-
-
-    <!-- Custom in page JS -->
-
     <script>
         //Add any JS functionality here, such as handling menu active states or fetching data
 
         const currentYear = new Date().getFullYear();
         document.getElementById("year").textContent = currentYear;
 
-        // get the username from the session storage
-        const user = JSON.parse(sessionStorage.getItem('user'));
-        
 
         const logoutButton = document.getElementById("logoutButton");
         logoutButton.addEventListener("click", () => {
-            sessionStorage.removeItem("user");
+            localStorage.removeItem("user");
             window.location.href = "/log-in.html";
         });
 
         const profileButton = document.getElementById("profileButton");
-        // Showing user name 
-        profileButton.textContent = `Hi, ${user.name}`
         profileButton.addEventListener("click", () => {
             window.location.href = "/profile.html";
         });
+
+        // Fetch user data from session storage
+        const user = JSON.parse(sessionStorage.getItem('user'));
+        if (user) {
+            const nameElement = document.getElementById('Profile__name');
+            const emailElement = document.getElementById('Profile__email');
+            nameElement.textContent = user.name;
+            emailElement.textContent = user.email;
+        }
+
     </script>
 
-    <script src="assests/js/custom.js"></script>
+<script src="assests/js/custom.js"></script>
 </body>
 </html>

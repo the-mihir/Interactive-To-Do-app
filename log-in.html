@@ -15,6 +15,12 @@
             max-width: 1200px;
             padding: 0 1rem;
         }
+        body{
+            background-image: url('./assests/img/start.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
     </style>
 </head>
 <body class="bg-gray-100 text-gray-800">
@@ -22,7 +28,7 @@
     <!-- ✅ Header/Navbar -->
     <header class="bg-white shadow-sm py-4">
         <div class="container mx-auto flex justify-between items-center">
-            <a href="#" class="text-2xl font-bold text-primary">Active ToDo</a>
+            <a href="/" class="text-2xl font-bold text-primary">Active ToDo</a>
             <a href="/sign-up.html" class="btn btn-primary rounded-full text-white px-6">Sign Up</a>
         </div>
     </header>
@@ -80,18 +86,51 @@
             const email = document.querySelector('input[name="email"]').value;
             const password = document.querySelector('input[name="password"]').value;
 
-            // Log the email and password values to the console
-            console.log("Email:", email);
-            console.log("Password:", password);
 
-            // You can now compare the credentials with data from localStorage
+            //compare the credentials with data from localStorage
             
-            const storedUser = JSON.parse(localStorage.getItem('user'));
-            if(storedUser && storedUser.email === email && storedUser.password === password) {
-                alert("Login successful!");
+            const storedUser = JSON.parse(localStorage.getItem('users'));
+           
+
+            if (storedUser) {
+            const user = storedUser.find(user => user.email === email && user.password === password);
+            if (user) {
+                // store data on session storage
+                sessionStorage.setItem('user', JSON.stringify(user));
+                
+                const toast = document.createElement('div');
+                toast.textContent = 'Login successful!';
+                toast.style.position = 'fixed';
+                toast.style.top = '10%';
+                toast.style.left = '50%';
+                toast.style.transform = 'translate(-50%, -50%)';
+                toast.style.backgroundColor = '#4CAF50';
+                toast.style.color = '#fff';
+                toast.style.padding = '10px';
+                toast.style.borderRadius = '5px';
+                toast.style.boxShadow = '0 0 10px rgba(0, 0, 0, 0.2)';
+                document.body.appendChild(toast);
+                setTimeout(() => {
+                toast.remove();
+                }, 3000);
                 window.location.href = "/dashboard.html"; // Redirect to the dashboard page
             } else {
-                alert("Invalid credentials. Please try again.");
+                const toast = document.createElement('div');
+                toast.textContent = 'Invalid email or password';
+                toast.style.position = 'fixed';
+                toast.style.top = '10%';
+                toast.style.left = '50%';
+                toast.style.transform = 'translate(-50%, -50%)';
+                toast.style.backgroundColor = '#FF0000';
+                toast.style.color = '#fff';
+                toast.style.padding = '10px';
+                toast.style.borderRadius = '5px';
+                toast.style.boxShadow = '0 0 10px rgba(0, 0, 0, 0.2)';
+                document.body.appendChild(toast);
+                setTimeout(() => {
+                toast.remove();
+                }, 3000);
+            }
             }
             
             

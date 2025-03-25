@@ -29,7 +29,7 @@
         <div class="flex-grow">
             <!-- Top Nav -->
             <div class="bg-white shadow-md px-4 py-3 flex items-center justify-between">
-                <div class="text-xl font-semibold">Active ToDo</div>
+                <div id="userDashboardName" class="text-xl font-semibold">User's Dashboard</div>
                 <div class="flex items-center space-x-4">
                     <div class="relative">
                         <button id="profileButton" class="px-4 py-2 text-white bg-blue-500 rounded-md">Profile</button>
@@ -42,24 +42,53 @@
 
             <!-- Dashboard Content -->
             <div class="px-6 py-4">
-                <div class="text-xl font-semibold">Dashboard Overview</div>
-                <div class="grid grid-cols-3 gap-4 mt-4">
-                    <!-- Card Example: Tasks -->
-                    <div class="bg-white p-6 rounded-lg shadow-md">
-                        <h3 class="text-lg font-semibold">Total Tasks</h3>
-                        <p class="text-4xl text-center mt-2">150</p>
+                <div class="text-xl font-semibold">Adding Tasks</div>
+                <hr class="mt-2">
+                <!-- input for task -->
+                <div class="flex items-center space-x-4 mt-8">
+                    <!-- Input Field -->
+                    <div class="w-full max-w-lg">
+                        <input type="text" id="task" name="task" class="px-4 py-2 w-full rounded-md border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 text-gray-800" placeholder="Enter your task">
                     </div>
+                    
+                    <!-- Add Button -->
+                    <button id="addTaskButton" class="px-6 py-3 bg-green-500 text-white font-semibold rounded-md hover:bg-green-600 transition duration-200 ease-in-out">
+                        Add Task
+                    </button>
+                </div> 
+                
+                
+                <!-- Added Tasks List's -->
 
-                    <!-- Card Example: Users -->
-                    <div class="bg-white p-6 rounded-lg shadow-md">
-                        <h3 class="text-lg font-semibold">Active Users</h3>
-                        <p class="text-4xl text-center mt-2">25</p>
-                    </div>
+                <div class="mt-8">
+                    <div class="flex">
 
-                    <!-- Card Example: Pending Tasks -->
-                    <div class="bg-white p-6 rounded-lg shadow-md">
-                        <h3 class="text-lg font-semibold">Pending Tasks</h3>
-                        <p class="text-4xl text-center mt-2">75</p>
+                        <!-- Task list -->
+                        <div class="w-1/2 m-2 p-3 border border-gray-300 ">
+                            <div class="text-xl font-semibold mb-4">
+                                <h3 class="text-xl font-semibold"> Pending Tasks</h3>
+                                <hr class="mt-2">
+                            </div>
+
+                            <ul id="taskList" class="space-y-4">
+                                <!-- Tasks will be dynamically added here -->
+                                
+                            </ul>
+                        </div>
+
+                        
+
+                        <!-- Completed Task list -->
+                        <div class="w-1/2 m-2 p-3 border border-gray-300">
+                            <div class="text-xl font-semibold">
+                                <h3 class="text-xl font-semibold">Completed Tasks</h3>
+                                <hr class="mt-2">
+                            </div>
+
+                            <ul id="completedTaskList" class="space-y-4">
+                                <!-- Tasks will be dynamically added here -->
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -82,9 +111,12 @@
         const currentYear = new Date().getFullYear();
         document.getElementById("year").textContent = currentYear;
 
+
         // get the username from the session storage
         const user = JSON.parse(sessionStorage.getItem('user'));
         
+        const userDashboardName = document.getElementById("userDashboardName");
+        userDashboardName.textContent = `🧑‍💻 ${user.name}, Dashboard`;
 
         const logoutButton = document.getElementById("logoutButton");
         logoutButton.addEventListener("click", () => {
@@ -98,6 +130,13 @@
         profileButton.addEventListener("click", () => {
             window.location.href = "/profile.html";
         });
+
+
+
+        
+
+
+
     </script>
 
     <script src="assests/js/custom.js"></script>

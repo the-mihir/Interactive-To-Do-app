@@ -8,13 +8,21 @@
     <!-- Tailwind & DaisyUI -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <style>
+          body{
+            background-image: url('./assests/img/start.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+    </style>
 </head>
 <body class="bg-gray-100 text-gray-800">
 
     <!-- Header -->
     <header class="bg-white shadow-sm py-4">
         <div class="container mx-auto flex justify-between items-center px-4">
-            <a href="#" class="text-2xl font-bold text-primary">Active ToDo</a>
+            <a href="/" class="text-2xl font-bold text-primary">Active ToDo</a>
             <a href="/log-in.html" class="btn btn-primary rounded-full text-white px-6">Login Here</a>
         </div>
     </header>
@@ -68,14 +76,13 @@
             const email = document.querySelector('input[name="email"]').value;
             const password = document.querySelector('input[name="password"]').value;
 
-            // check user exists or not
-            const user = JSON.parse(localStorage.getItem('users')) || [];
+            // Check if user already exists
+            const users = JSON.parse(localStorage.getItem('users')) || [];
             const existingUser = users.find(user => user.email === email);
             if(existingUser) {
                 alert("User already exists!");
                 return;
             }
-
 
             // Store user data in local storage
             const userData = {
@@ -85,7 +92,6 @@
             };
 
             // wannt to store multipule users
-            const users = JSON.parse(localStorage.getItem('users')) || [];
             users.push(userData);
             localStorage.setItem('users', JSON.stringify(users));
 
@@ -94,6 +100,7 @@
             document.querySelector('input[name="name"]').value = "";
             document.querySelector('input[name="email"]').value = "";
             document.querySelector('input[name="password"]').value = "";
+            
 
             // Redirect to log-in page
             window.location.href = "/log-in.html";
