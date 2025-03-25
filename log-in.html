@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Active ToDo</title>
+    
+    <!-- DaisyUI & Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+
+    <style>
+        /* Custom styles for better layout */
+        .container {
+            max-width: 1200px;
+            padding: 0 1rem;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-800">
+
+    <!-- ✅ Header/Navbar -->
+    <header class="bg-white shadow-sm py-4">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold text-primary">Active ToDo</a>
+            <a href="/sign-up.html" class="btn btn-primary rounded-full text-white px-6">Sign Up</a>
+        </div>
+    </header>
+
+    <!-- ✅ Main Content (Login Form) -->
+    <main class="flex items-center justify-center min-h-[90vh]">
+        <div class="card w-full max-w-md bg-white shadow-lg rounded-lg p-8">
+            <h2 class="text-3xl font-bold text-center text-gray-700 mb-6">Login</h2>
+            
+            <!-- Add ID to the form -->
+            <form id="loginForm">
+                <div class="form-control mb-4">
+                    <label class="label">
+                        <span class="label-text font-semibold">Email</span>
+                    </label>
+                    <input name="email" type="email" placeholder="Enter your email" 
+                           class="input input-bordered w-full focus:outline-none focus:ring-0 focus:border-transparent" required />
+                </div>
+                
+                <div class="form-control mb-4">
+                    <label class="label">
+                        <span class="label-text font-semibold">Password</span>
+                    </label>
+                    <input name="password" type="password" placeholder="Enter your password" 
+                           class="input input-bordered w-full focus:outline-none focus:ring-0 focus:border-transparent" required />
+                </div>
+
+                <div class="form-control flex flex-col gap-2 mt-4">
+                    <button type="submit" class="btn btn-primary rounded-full w-full hover:bg-blue-600 transition duration-200">Login</button>
+                    <a href="#" class="text-blue-500 text-sm text-center hover:underline">Forgot Password?</a>
+                </div>
+            </form>
+
+            <p class="text-center text-sm mt-4">
+                Don't have an account? 
+                <a href="/sign-up.html" class="text-blue-500 font-semibold hover:underline">Sign Up</a>
+            </p>
+        </div>
+    </main>
+
+    <!-- ✅ Footer -->
+    <footer class="bg-gray-900 text-white py-4 fixed bottom-0 w-full text-center">
+        <p>© <span id="year"></span> Your Company. All rights reserved.</p>
+    </footer>
+
+    <!-- ✅ JavaScript for Dynamic Year -->
+    <script>
+        document.getElementById("year").textContent = new Date().getFullYear();
+
+        // Handle form submission
+        document.getElementById("loginForm").addEventListener("submit", function(event) {
+            event.preventDefault();  // Prevent the default form submission
+
+            // Get form data
+            const email = document.querySelector('input[name="email"]').value;
+            const password = document.querySelector('input[name="password"]').value;
+
+            // Log the email and password values to the console
+            console.log("Email:", email);
+            console.log("Password:", password);
+
+            // You can now compare the credentials with data from localStorage
+            
+            const storedUser = JSON.parse(localStorage.getItem('user'));
+            if(storedUser && storedUser.email === email && storedUser.password === password) {
+                alert("Login successful!");
+                window.location.href = "/dashboard.html"; // Redirect to the dashboard page
+            } else {
+                alert("Invalid credentials. Please try again.");
+            }
+            
+            
+        });
+    </script>
+
+</body>
+</html>
