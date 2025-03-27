@@ -32,7 +32,7 @@
         <div class="flex-grow">
             <!-- Top Nav -->
             <div class="bg-white shadow-md px-4 py-3 flex items-center justify-between">
-                <div class="text-xl font-semibold">Admin Dashboard</div>
+                <div class="text-xl font-semibold">Super Admin Dashboard</div>
                 <div class="flex items-center space-x-4">
                     <div class="relative">
                         <button id="profileButton" class="px-4 py-2 text-white bg-blue-500 rounded-md">Profile</button>
@@ -49,21 +49,56 @@
                 <div class="grid grid-cols-3 gap-4 mt-4">
                     <!-- Card Example: Tasks -->
                     <div class="bg-white p-6 rounded-lg shadow-md">
-                        <h3 class="text-lg font-semibold">Total Tasks</h3>
+                        <h3 class="text-lg font-semibold">Total Users</h3>
                         <p class="text-4xl text-center mt-2">150</p>
                     </div>
 
                     <!-- Card Example: Users -->
-                    <div class="bg-white p-6 rounded-lg shadow-md">
-                        <h3 class="text-lg font-semibold">Active Users</h3>
-                        <p class="text-4xl text-center mt-2">25</p>
-                    </div>
-
-                    <!-- Card Example: Pending Tasks -->
-                    <div class="bg-white p-6 rounded-lg shadow-md">
-                        <h3 class="text-lg font-semibold">Pending Tasks</h3>
-                        <p class="text-4xl text-center mt-2">75</p>
-                    </div>
+                </div>
+            </div>
+            
+            
+            <div class="w-full max-w-6xl p-8">
+                <h2 class="text-4xl font-bold mb-6">User List</h2>
+                <div class="overflow-x-auto">
+                    <table class="table w-full">
+                        <!-- Table Header -->
+                        <thead>
+                            <tr class="bg-gray-800 text-white text-lg">
+                                <th class="px-8 py-3 text-left">Name</th>
+                                <th class="px-8 py-3 text-left">Email</th>
+                                <th class="px-8 py-3 text-center">Role</th>
+                                <th class="px-8 py-3 text-center">Actions</th>
+                            </tr>
+                        </thead>
+                        <!-- Table Body -->
+                        <tbody class="">
+                            <!-- User Row 1 -->
+                            <tr class="hover:bg-gray-400 transition">
+                                <td class="px-8 py-4 text-lg font-medium">John Doe</td>
+                                <td class="px-8 py-4 text-lg opacity-90">M1A7I@example.com</td>
+                                <td class="px-8 py-4 text-center">
+                                    <span class="badge badge-primary px-4 py-2 text-lg">Admin</span>
+                                </td>
+                                <td class="px-8 py-4 text-center">
+                                    <button class="btn btn-md btn-outline btn-info mr-3">Edit</button>
+                                    <button class="btn btn-md btn-outline btn-error">Delete</button>
+                                </td>
+                            </tr>
+                            <!-- User Row 2 -->
+                            <tr class="hover:bg-gray-400 transition">
+                                <td class="px-8 py-4 text-lg font-medium">Jane Smith</td>
+                                <td class="px-8 py-4 text-lg opacity-90">0bM4T@example.com</td>
+                                <td class="px-8 py-4 text-center">
+                                    <span class="badge badge-secondary px-4 py-2 text-lg">User</span>
+                                </td>
+                                <td class="px-8 py-4 text-center">
+                                    <button class="btn btn-md btn-outline btn-info mr-3">Edit</button>
+                                    <button class="btn btn-md btn-outline btn-error">Delete</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
